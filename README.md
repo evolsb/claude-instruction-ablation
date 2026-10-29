@@ -90,6 +90,10 @@ which.
   a single prompt in any Claude Code session.
 - **[`measure-footprint.sh`](measure-footprint.sh)** - measure a repo's always-on
   instruction footprint. Read-only; prints word counts and paths, never file contents.
+  It follows `@path` imports out of CLAUDE.md, counts the project's auto-memory index,
+  and leaves rules files with `paths:` frontmatter out of the total (they load only on a
+  matching file). Without the first two, a CLAUDE.md that is one `@AGENTS.md` line
+  measures as almost nothing.
 - **[`multi-repo-workflow.js`](multi-repo-workflow.js)** - optional. A Claude Code dynamic
   workflow that runs analyze -> implement -> verify agent pipelines across many repos in
   parallel. If you don't use dynamic workflows, run the rubric prompt once per repo
